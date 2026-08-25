@@ -8,7 +8,7 @@ Official public developer documentation, schemas, manifests, data dictionaries, 
 
 | Product | Latest Release | Documentation | Description |
 | :--- | :---: | :--- | :--- |
-| **[Infinite Audience Graph](products/infinite-audience-graph/)** | [`v1.0.1.1`](https://github.com/no-fait/infinite-audience/releases/tag/iag-v1.0.1.1) | [Overview](products/infinite-audience-graph/README.md) • [Data Dictionary](products/infinite-audience-graph/DATA_DICTIONARY.md) • [Changelog](products/infinite-audience-graph/CHANGELOG.md) | Identity graph of US adult consumers featuring hundreds of attributes across many categories like Demographics & Household, Financial & Property, Media & Behavioral, Land Context, Brand Proximity, Neighborhood Lifestyle, etc. |
+| **[Infinite Audience Graph](products/infinite-audience-graph/)** | [`v1.0.1.0`](https://github.com/no-fait/infinite-audience/releases/tag/iag-v1.0.1.0) | [Overview](products/infinite-audience-graph/README.md) • [Data Dictionary](products/infinite-audience-graph/DATA_DICTIONARY.md) • [Changelog](products/infinite-audience-graph/CHANGELOG.md) | Identity graph of US adult consumers featuring hundreds of attributes across many categories like Demographics & Household, Financial & Property, Media & Behavioral, Land Context, Brand Proximity, Neighborhood Lifestyle, etc. |
 
 ---
 
@@ -37,3 +37,7 @@ To receive notifications when new product versions, schemas, and releases are pu
    ```
    https://github.com/no-fait/infinite-audience/releases.atom
    ```
+
+---
+
+*Maintained by **Finn** (<support@infiniteaudience.ai>) • Infinite Audience*

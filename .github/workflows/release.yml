@@ -1,0 +1,56 @@
+name: Infinite Audience Release Automation
+
+on:
+  push:
+    tags:
+      - '*-v*'
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to publish (e.g. iag-v1.0.1.0)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish-release:
+    name: Publish Release (by Finn)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git User as Finn
+        run: |
+          git config user.name "Finn"
+          git config user.email "support@infiniteaudience.ai"
+
+      - name: Determine Release Tag & Product Name
+        id: release_meta
+        run: |
+          TAG="${{ github.event.inputs.tag || github.ref_name }}"
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          if [[ "$TAG" =~ ^iag- ]]; then
+            VER="${TAG#iag-}"
+            echo "title=Infinite Audience Graph $VER" >> $GITHUB_OUTPUT
+          else
+            echo "title=Infinite Audience Release $TAG" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.release_meta.outputs.tag }}
+          name: ${{ steps.release_meta.outputs.title }}
+          draft: false
+          prerelease: false
+          generate_release_notes: false
+          files: |
+            dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

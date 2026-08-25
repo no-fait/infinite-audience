@@ -2,7 +2,7 @@
 
 All notable releases, schema evolutions, and coverage changes for the Infinite Audience Graph are documented here.
 
-## [Infinite Audience Graph v1.0.1.0] - August 24, 2026
+## [Infinite Audience Graph v1.0.1.0] - August 25, 2026
 
 **Release Tag:** `iag-v1.0.1.0` | **Vintage:** August 2026
 
@@ -16,3 +16,6 @@ All notable releases, schema evolutions, and coverage changes for the Infinite A
 ### 🚀 Product Release Baseline
 - **Active Schema**: 525 customer-facing attributes across 12 core categories.
 - **National Linkage Graph**: Complete nation-wide US coverage resolved across multi-vendor identity signals.
+
+---
+*Maintained by **Finn** (<support@infiniteaudience.ai>) • Infinite Audience*

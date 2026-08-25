@@ -1,6 +1,6 @@
 # Infinite Audience Graph (IAG)
 
-[![Latest Release](https://img.shields.io/badge/Release-v1.0.1.1-blue.svg)](https://github.com/no-fait/infinite-audience/releases/tag/iag-v1.0.1.1)
+[![Latest Release](https://img.shields.io/badge/Release-v1.0.1.0-blue.svg)](https://github.com/no-fait/infinite-audience/releases/tag/iag-v1.0.1.0)
 [![Attributes](https://img.shields.io/badge/Attributes-525_Columns-green.svg)](DATA_DICTIONARY.md)
 [![Coverage](https://img.shields.io/badge/Resolved_Individuals-216,819,301-purple.svg)](#graph-scale--coverage)
 
@@ -8,7 +8,7 @@ Official public schema documentation, data dictionaries, and release changelogs 
 
 ---
 
-## 📊 Graph Scale & Coverage (`v1.0.1.1`)
+## 📊 Graph Scale & Coverage (`v1.0.1.0`)
 
 | Entity Dimension | Total Verified Count | Description |
 | :--- | :---: | :--- |
@@ -24,16 +24,16 @@ Official public schema documentation, data dictionaries, and release changelogs 
 
 - **[Data Dictionary](DATA_DICTIONARY.md)**: Full attribute definitions, data types, PII classification, and value codebooks for all 525 attributes.
 - **[Changelog](CHANGELOG.md)**: Historical release notes, schema evolutions, and graph coverage changes.
-- **[Latest GitHub Release](https://github.com/no-fait/infinite-audience/releases/tag/iag-v1.0.1.1)**: Download machine-readable JSON & CSV schema packages.
+- **[Latest GitHub Release](https://github.com/no-fait/infinite-audience/releases/tag/iag-v1.0.1.0)**: Download machine-readable JSON & CSV schema packages.
 
 ---
 
 ## 📦 Release Packages & Assets
 
 Every release includes downloadable artifacts attached to GitHub Releases:
-- `iag_data_dictionary_v1.0.1.1.json`: Machine-readable attribute metadata and category structures.
-- `iag_data_dictionary_v1.0.1.1.csv`: Tabular spreadsheet of all data dictionary attributes.
-- `iag_statistics_v1.0.1.1.json`: Exact entity and node topology counts for the release.
+- `iag_data_dictionary_v1.0.1.0.json`: Machine-readable attribute metadata and category structures.
+- `iag_data_dictionary_v1.0.1.0.csv`: Tabular spreadsheet of all data dictionary attributes.
+- `iag_statistics_v1.0.1.0.json`: Exact entity and node topology counts for the release.
 
 ---
 
