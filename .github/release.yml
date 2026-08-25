@@ -1,0 +1,19 @@
+# GitHub Release configuration
+changelog:
+  categories:
+    - title: "🚀 New Audience Segments"
+      labels:
+        - "audiences"
+        - "segments"
+    - title: "📊 Graph Coverage & Identity Linkages"
+      labels:
+        - "graph"
+        - "identity"
+        - "linkage"
+    - title: "🛠 Schema & Attribute Updates"
+      labels:
+        - "schema"
+        - "data-dictionary"
+    - title: "⚠️ Breaking Changes"
+      labels:
+        - "breaking-change"
