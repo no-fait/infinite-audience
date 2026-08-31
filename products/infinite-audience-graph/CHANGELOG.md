@@ -2,7 +2,7 @@
 
 All notable releases, schema evolutions, and coverage changes for the Infinite Audience Graph are documented here.
 
-## [Infinite Audience Graph v1.0.1.0] - August 25, 2026
+## [Infinite Audience Graph v1.0.1.0] - August 31, 2026
 
 **Release Tag:** `iag-v1.0.1.0` | **Vintage:** August 2026
 

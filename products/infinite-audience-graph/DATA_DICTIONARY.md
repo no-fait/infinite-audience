@@ -1,6 +1,6 @@
 # Infinite Audience Graph — Data Dictionary
 
-**Version:** `v1.0.1.0` | **Generated:** August 25, 2026 | **Total Attributes:** 525
+**Version:** `v1.0.1.0` | **Generated:** August 30, 2026 | **Total Attributes:** 525
 
 This data dictionary provides comprehensive field definitions, data types, entity levels, PII classifications, and value mappings for the Infinite Audience Graph (IAG).
 
