@@ -1,0 +1,8 @@
+# Assets created for GitHub release attachments
+dist/
+tmp/
+*.tmp
+
+# Operating System Files
+.DS_Store
+Thumbs.db
