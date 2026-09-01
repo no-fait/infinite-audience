@@ -9,6 +9,7 @@ Official public developer documentation, schemas, manifests, data dictionaries, 
 | Product | Latest Release | Documentation | Description |
 | :--- | :---: | :--- | :--- |
 | **[Infinite Audience Graph](products/infinite-audience-graph/)** | [`v1.0.1.0`](https://github.com/no-fait/infinite-audience/releases/tag/iag-v1.0.1.0) | [Overview](products/infinite-audience-graph/README.md) • [Data Dictionary](products/infinite-audience-graph/DATA_DICTIONARY.md) • [Changelog](products/infinite-audience-graph/CHANGELOG.md) | Identity graph of US adult consumers featuring hundreds of attributes across many categories like Demographics & Household, Financial & Property, Media & Behavioral, Land Context, Brand Proximity, Neighborhood Lifestyle, etc. |
+| **[Infinite Audience Platform](products/infinite-audience-platform/)** | Production API | [API Reference](https://docs.infiniteaudience.ai/api/) • [How-to Guides](https://docs.infiniteaudience.ai/) • [OpenAPI YAML](products/infinite-audience-platform/openapi.yaml) • [OpenAPI JSON](products/infinite-audience-platform/openapi.json) | Resolve and enrich customer identities, build audiences, connect destinations, and automate Infinite Audience workflows. |
 
 ---
 
@@ -24,6 +25,10 @@ infinite-audience/
     │   ├── README.md                      # Graph scale, coverage, and quick reference
     │   ├── DATA_DICTIONARY.md             # Complete attribute dictionary & codebooks
     │   └── CHANGELOG.md                   # Single running chronological version history
+    ├── infinite-audience-platform/        # Customer-facing platform API contract
+    │   ├── README.md                      # API overview and documentation links
+    │   ├── openapi.yaml                   # Machine-readable production API (YAML)
+    │   └── openapi.json                   # Machine-readable production API (JSON)
     └── ...                                # Additional Infinite Audience products
 ```
 
