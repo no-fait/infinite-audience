@@ -6,12 +6,8 @@ All notable releases, schema evolutions, and coverage changes for the Infinite A
 
 **Release Tag:** `iag-v1.2.2.0` | **Vintage:** September 2026
 
-### 📊 Coverage & Scale
-- **Resolved Individuals:** **215,677,380** *(-1,141,921 / -0.5%)*
-- **Household Clusters:** **129,208,600** *(+3,254,771 / +2.6%)*
-- **Physical Delivery Addresses:** **110,704,326** *(-404,692 / -0.4%)*
-- **Building Footprints:** **92,811,629** *(-252,301 / -0.3%)*
-- **Linkage Identifiers (Email, Phone, Address):** **1,053,066,095** *(-8,541,696 / -0.8%)*
+### 📊 Graph Scale
+- **Resolved Individuals:** **215,677,380** verified consumer profiles
 
 ### 🆕 Added Attributes (21)
 - `wildfire_risk_national_rank` (`FLOAT64` • *Environment & Risk*): Wildfire risk to homes percentile rank nationally.
@@ -37,8 +33,8 @@ All notable releases, schema evolutions, and coverage changes for the Infinite A
 - `usda_snap_percentage` (`FLOAT64` • *Census Demographics & Socioeconomic*): Percentage of households participating in the Supplemental Nutrition Assistance Program (SNAP).
 
 ### 🔄 Modified Attributes (5)
-- `emails` (*Identity*): type: `ARRAY<RECORD>` -> `ARRAY<STRUCT<priority INT64, match_level STRING, confidence_score FLOAT64, email STRING, email_domain_type STRING>>`, updated description
-- `phones` (*Identity*): type: `ARRAY<RECORD>` -> `ARRAY<STRUCT<priority INT64, match_level STRING, confidence_score FLOAT64, phone STRING, phone_type STRING>>`, updated description
+- `emails` (*Identity*): type: `ARRAY<STRUCT<priority INT64, match_level STRING, email STRING>>` -> `ARRAY<STRUCT<priority INT64, match_level STRING, confidence_score FLOAT64, email STRING, email_domain_type STRING>>`, updated description
+- `phones` (*Identity*): type: `ARRAY<STRUCT<priority INT64, match_level STRING, phone_type STRING, phone STRING>>` -> `ARRAY<STRUCT<priority INT64, match_level STRING, confidence_score FLOAT64, phone STRING, phone_type STRING>>`, updated description
 - `household_size` (*Demographics & Household*): type: `NUMERIC` -> `INT64`, updated description
 - `has_children` (*Demographics & Household*): type: `STRING` -> `BOOL`, updated description
 - `home_has_pool` (*Financial & Property*): type: `STRING` -> `BOOL`, updated description
@@ -58,20 +54,6 @@ All notable releases, schema evolutions, and coverage changes for the Infinite A
 **Infinite Audience Graph v1.2.2.0** represents a major quarterly data warehouse release delivering significant expansions to local municipal geography, contact point intelligence, demographic modeling, and federal environmental attributes. 
 
 This release rematerializes nationwide addresses to strict **USPS Publication 28 standardizations**, introduces **unit-gated household clustering** (capped at $\le 8$ members), establishes **symmetrical contact point STRUCT arrays** (`phones`, `emails`) with verification scores and priority ranking, and enriches every consumer record with authoritative **EPA Smart Location walkability**, **USDA food environment**, and **HUD fair market rents**.
-
----
-
-## 📊 Verified Graph Scale & Topology
-
-All metrics are physically verified from production `marts.iag` and identity registry tables:
-
-| Entity Dimension | Total Verified Count | Description |
-| :--- | :---: | :--- |
-| **Resolved Individuals** | **215,677,380** | Active, non-churned adult consumer profiles |
-| **Household Clusters** | **129,208,600** | Unit-gated residential household clusters ($\le 8$ members) |
-| **Physical Delivery Addresses** | **110,704,326** | USPS Publication 28 standardized rooftop delivery points |
-| **Building Footprints** | **92,811,629** | Unique physical parcels and building structures |
-| **Graph Node Identifiers** | **1,053,066,095** | Traversable identity touchpoints (emails, phones, addresses) |
 
 ---
 
@@ -131,6 +113,9 @@ All metrics are physically verified from production `marts.iag` and identity reg
 | **Food Environment Atlas** | USDA Economic Research Service | `2020` / `2023` |
 | **Fair Market Rents** | US Dept. of Housing & Urban Development (HUD) | `FY 2026` 50th Percentile |
 | **Broadband & Connectivity** | Federal Communications Commission (FCC) | National Broadband Map `2026` |
+
+---
+*Maintained by **Finn** (<support@infiniteaudience.ai>) • Infinite Audience*
 
 ---
 *Maintained by **Finn** (<support@infiniteaudience.ai>) • Infinite Audience*
