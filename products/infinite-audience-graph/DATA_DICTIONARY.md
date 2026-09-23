@@ -610,7 +610,7 @@ This data dictionary provides comprehensive field definitions, data types, entit
 ---
 
 ## Transportation & Mobility
-*Neighborhood personality profiling through point-of-interest density and concentration indexes across 20 lifestyle themes*
+*Walkability indices, transit accessibility, intersection density, and household vehicle ownership metrics*
 
 | Column Name | Type | Level | PII | Description | Value Mappings / Notes |
 | :--- | :--- | :--- | :---: | :--- | :--- |
