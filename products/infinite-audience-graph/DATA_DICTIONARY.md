@@ -91,7 +91,7 @@ This data dictionary provides comprehensive field definitions, data types, entit
 | Column Name | Type | Level | PII | Description | Value Mappings / Notes |
 | :--- | :--- | :--- | :---: | :--- | :--- |
 | `active_social_networks` | `ARRAY<STRING>` | Individual | No | Active social media networks (used in last 30 days) | `facebook`: Facebook<br>`instagram`: Instagram<br>`linkedin`: LinkedIn<br>`pinterest`: Pinterest<br>`x`: X (Twitter)<br>`youtube`: YouTube |
-| `streaming_subscriptions` | `ARRAY<STRING>` | Individual | No | Active streaming media subscriptions | `amazon_prime`: Amazon Prime Video<br>`hulu`: Hulu<br>`netflix`: Netflix<br>`hbo_max`: HBO Max |
+| `streaming_subscriptions` | `ARRAY<STRING>` | Individual | No | Active streaming media subscriptions | `amazon_prime`: Amazon Prime Video<br>`hulu`: Hulu<br>`netflix`: Netflix |
 | `media_channels` | `ARRAY<STRING>` | Individual | No | Preferred media channels | `magazines`: Magazines<br>`newspapers`: Newspapers<br>`radio`: Radio<br>`public_radio`: Public Radio<br>`television`: Television<br>`internet`: Internet<br>`video_streaming`: Video Streaming |
 | `primary_mobile_os` | `STRING` | Individual | No | Primary mobile device operating system (iOS, Android) | `iOS`: iOS<br>`Android`: Android |
 | `political_affiliation` | `STRING` | Individual | No | Primary party affiliation (Democrat, Republican, Independent) | `Democrat`: Democrat<br>`Republican`: Republican<br>`Independent`: Independent |
