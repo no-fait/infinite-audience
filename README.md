@@ -40,4 +40,4 @@ To receive notifications when new product versions, schemas, and releases are pu
 
 ---
 
-*Maintained by **Finn** (<support@infiniteaudience.ai>) • Infinite Audience*
+*Maintained by **Finn** (<finn@infiniteaudience.ai>) • Infinite Audience*
