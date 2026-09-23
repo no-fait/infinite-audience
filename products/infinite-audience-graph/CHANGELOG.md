@@ -39,14 +39,6 @@ All notable releases, schema evolutions, and coverage changes for the Infinite A
 - `has_children` (*Demographics & Household*): type: `STRING` -> `BOOL`, updated description
 - `home_has_pool` (*Financial & Property*): type: `STRING` -> `BOOL`, updated description
 
-## 🌟 Executive Summary
-
-**Infinite Audience Graph v1.2.2.0** represents a major quarterly data warehouse release delivering significant expansions to local municipal geography, contact point intelligence, demographic modeling, and federal environmental attributes. 
-
-This release rematerializes nationwide addresses to strict **USPS Publication 28 standardizations**, introduces **unit-gated household clustering** (capped at $\le 8$ members), establishes **symmetrical contact point STRUCT arrays** (`phones`, `emails`) with verification scores and priority ranking, and enriches every consumer record with authoritative **EPA Smart Location walkability**, **USDA food environment**, and **HUD fair market rents**.
-
----
-
 ## 🚀 What's New in v1.2.2.0
 
 ### 1. Municipal Geography & Minor Civil Divisions (MCDs)
@@ -54,8 +46,7 @@ This release rematerializes nationwide addresses to strict **USPS Publication 28
 - **Sub-County Granularity**: Marketers can now target local government jurisdictions, New England towns, and Midwestern townships with legal administrative boundaries.
 
 ### 2. Behavioral & Lifestyle Profiles
-- **Gamer Profile Restored**: Re-introduced the `is_gamer` boolean attribute within the Media & Behavioral category, identifying active video game and interactive media enthusiasts.
-- **Streaming Subscription Audit**: Sanitized subscription video-on-demand arrays to reflect verified source attributes.
+- **Gamer Profile**: Added the `is_gamer` boolean attribute within the Media & Behavioral category, identifying active video game and interactive media enthusiasts.
 
 ### 3. Contact Point Intelligence & Ranked Priority
 - **Harmonized Contact STRUCTs**: Standardized `phones` and `emails` contact point arrays to symmetrical STRUCT schemas (`priority`, `match_level`, `confidence_score`, `value`, `domain_type`/`phone_type`).
@@ -72,37 +63,15 @@ This release rematerializes nationwide addresses to strict **USPS Publication 28
 
 ## 🛠️ Graph & Platform Improvements
 
-- **USPS Publication 28 Address Parity**: Executed full warehouse address re-standardization enforcing USPS Pub 28 rules across street suffixes, directionals, and secondary unit designators. Excluded Puerto Rico (`state = 'PR'`) to focus on 50 states + DC.
 - **Unit-Gated Household Clustering**: Remediated commercial drop-point overclustering by gating household grouping on secondary unit numbers (`unit_norm`) and capping household clusters at 8 members.
-- **Dynamic Active Universe Booleans**: Implemented dynamic lifecycle flags (`active`, `delete`) in `iag_core`, completely nullifying personal attributes for churned vendor records while preserving anonymous linkage lookup shells.
 - **Child Attribute Harmonization**: Harmonized child count, age bracket ranges, and presence flags across consumer profiles, converting boolean vendor fields to native SQL booleans.
-- **Spatial Partition Alignment**: Standardized `state_fips_int` range partitioning across spatial and census support tables (`RANGE_BUCKET(state_fips_int, GENERATE_ARRAY(0, 80, 1))`) and enforced join equality for Dynamic Partition Pruning.
-- **Redundant Federal Column Deprecation**: Dropped 14 physical RUCA and NCHS descriptor columns from physical schemas in favor of catalog-backed enum codebooks.
-- **Anchor Brand Proximity**: Expanded commercial airport and anchor brand aliases for nationwide spatial proximity matching.
 
 ---
 
 ## 🛡️ Data Quality & Outlier Sanitization
 
-- **Geocoding Sanitization**: Constrained building number regex parsing and sanitized malformed Overture postcodes to eliminate negative and out-of-range postcodes.
 - **Census Rate Denominators**: Corrected ACS labor-force participation and vehicle ownership rate denominators to prevent sentinel division-by-zero or values $>1.0$.
 - **FEMA NRI & DOE LEAD Outliers**: Sanitized FEMA National Risk Index sentinels (`-9999`) and DOE LEAD energy-burden ratio outliers.
-- **Downstream Views Validation**: Verified zero-breaking changes across all dependent marketplace views (`marts.iag_preview_100k`, `marts.iag_sample_1pct`, `marts.iag_geo_summary`).
-
----
-
-## 🏛️ Authoritative Data Provenance
-
-| Domain / Category | Authoritative Primary Source | Vintage / Benchmark |
-| :--- | :--- | :--- |
-| **Consumer Identity & Linkage** | Multi-Vendor Identity Consortia | `2026-09-17` |
-| **Rooftop & Parcel Geocoding** | Overture Maps Foundation | `2026-08` Snapshot |
-| **Census Demographics & Socioeconomics** | US Census Bureau ACS 5-Year Estimates | `2022` 5-Year Vintage |
-| **Municipal Boundaries & MCDs** | US Census Bureau TIGER/Line | `2026` Vintage |
-| **Smart Location & Walkability** | US Environmental Protection Agency (EPA) | SLD `2021` |
-| **Food Environment Atlas** | USDA Economic Research Service | `2020` / `2023` |
-| **Fair Market Rents** | US Dept. of Housing & Urban Development (HUD) | `FY 2026` 50th Percentile |
-| **Broadband & Connectivity** | Federal Communications Commission (FCC) | National Broadband Map `2026` |
 
 ---
 *Maintained by **Finn** (<finn@infiniteaudience.ai>) • Infinite Audience*
