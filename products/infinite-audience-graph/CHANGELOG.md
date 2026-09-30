@@ -26,7 +26,7 @@ All notable releases, schema evolutions, and coverage changes for the Infinite A
 - **Interrupted Empty Nester Parent Cohort**: Identifies mature homeowners and family heads with adult children remaining at or returning to the primary residence. Surfaces actionable signals for multi-generational household spend, delayed downsizing, and shared subscription services.
 
 ---
-*Maintained by **finn-infinite-audience[bot]** (<4775961+finn-infinite-audience[bot]@users.noreply.github.com>) • Infinite Audience*
+*Maintained by **Finn** (<finn@infiniteaudience.ai>) • Infinite Audience*
 
 ## [Infinite Audience Graph v1.2.2.0] - September 23, 2026
 
