@@ -2,6 +2,32 @@
 
 All notable releases, schema evolutions, and coverage changes for the Infinite Audience Graph are documented here.
 
+## [Infinite Audience Graph v1.3.2.1] - September 30, 2026
+
+**Release Tag:** `iag-v1.3.2.1` | **Vintage:** September 2026
+
+### 📊 Graph Scale
+- **Resolved Individuals:** **215,677,380** verified consumer profiles
+
+### 🆕 Added Attributes (1)
+- `infinite_audiences` (`ARRAY<STRING>` • *Audiences & Segments*): Array of active Infinite Audience cohorts
+
+### 🗑️ Removed Attributes (5)
+- `acs_female_female_households_rate` (*Census Demographics & Socioeconomic*)
+- `acs_male_male_households_rate` (*Census Demographics & Socioeconomic*)
+- `acs_speak_only_english_at_home_rate` (*Census Demographics & Socioeconomic*)
+- `acs_speak_spanish_at_home_low_english_rate` (*Census Demographics & Socioeconomic*)
+- `acs_speak_spanish_at_home_rate` (*Census Demographics & Socioeconomic*)
+
+## 🚀 What's New in v1.3.2.1
+
+### 1. Trending Audience Vectors: Multi-Generational Living
+- **Boomerang Post-Grad Adult Cohort**: Synthesizes individual age brackets, highest educational attainment, and household co-residency signals to identify young adult graduates living with parents. Provides high-affinity reach for early-career financial services, personal mobility, and technology products.
+- **Interrupted Empty Nester Parent Cohort**: Identifies mature homeowners and family heads with adult children remaining at or returning to the primary residence. Surfaces actionable signals for multi-generational household spend, delayed downsizing, and shared subscription services.
+
+---
+*Maintained by **finn-infinite-audience[bot]** (<4775961+finn-infinite-audience[bot]@users.noreply.github.com>) • Infinite Audience*
+
 ## [Infinite Audience Graph v1.2.2.0] - September 23, 2026
 
 **Release Tag:** `iag-v1.2.2.0` | **Vintage:** September 2026

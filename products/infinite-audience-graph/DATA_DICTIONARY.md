@@ -1,6 +1,6 @@
 # Infinite Audience Graph — Data Dictionary
 
-**Version:** `v1.2.2.0` | **Generated:** September 22, 2026 | **Total Attributes:** 543
+**Version:** `v1.3.2.1` | **Generated:** September 30, 2026 | **Total Attributes:** 539
 
 This data dictionary provides comprehensive field definitions, data types, entity levels, PII classifications, and value mappings for the Infinite Audience Graph (IAG).
 
@@ -9,12 +9,13 @@ This data dictionary provides comprehensive field definitions, data types, entit
 ## Table of Contents
 
 - [Identity](#identity) (17 attributes)
+- [Audiences & Segments](#audiences--segments) (1 attributes)
 - [Demographics & Household](#demographics--household) (10 attributes)
 - [Financial & Property](#financial--property) (10 attributes)
 - [Media & Behavioral](#media--behavioral) (12 attributes)
 - [Geography](#geography) (13 attributes)
 - [Land Context](#land-context) (21 attributes)
-- [Census Demographics & Socioeconomic](#census-demographics--socioeconomic) (248 attributes)
+- [Census Demographics & Socioeconomic](#census-demographics--socioeconomic) (243 attributes)
 - [Health](#health) (40 attributes)
 - [Environment & Risk](#environment--risk) (10 attributes)
 - [Economic Indicators](#economic-indicators) (17 attributes)
@@ -46,6 +47,15 @@ This data dictionary provides comprehensive field definitions, data types, entit
 | `zip5` | `STRING` | Household | No | 5-digit ZIP code | - |
 | `emails` | `ARRAY<STRUCT<priority INT64, match_level STRING, confidence_score FLOAT64, email STRING, email_domain_type STRING>>` | Individual | 🔒 Yes | Resolved email addresses associated with the person, ordered by priority rank, match level, multi-factor confidence score, email address, and email domain type. | - |
 | `phones` | `ARRAY<STRUCT<priority INT64, match_level STRING, confidence_score FLOAT64, phone STRING, phone_type STRING>>` | Individual | 🔒 Yes | Resolved telephone numbers associated with the person, ordered by priority rank (prioritizing wireless/mobile lines), match level, multi-factor confidence score, phone number, and phone line type. | - |
+
+---
+
+## Audiences & Segments
+*Derived audience classifications and persona segments. Ready to activate cohorts synthesized from underlying IAG attributes*
+
+| Column Name | Type | Level | PII | Description | Value Mappings / Notes |
+| :--- | :--- | :--- | :---: | :--- | :--- |
+| `infinite_audiences` | `ARRAY<STRING>` | Individual | No | Array of active Infinite Audience cohorts | `Boomerang Post-Grad Adult`: Boomerang Post-Grad Adult<br>`Interrupted Empty Nester Parent`: Interrupted Empty Nester Parent |
 
 ---
 
@@ -250,7 +260,6 @@ This data dictionary provides comprehensive field definitions, data types, entit
 | `acs_female_75_to_79_rate` | `FLOAT64` | Census_Tract | No | P: female_75_to_79 / total_pop | - |
 | `acs_female_80_to_84_rate` | `FLOAT64` | Census_Tract | No | P: female_80_to_84 / total_pop | - |
 | `acs_female_85_and_over_rate` | `FLOAT64` | Census_Tract | No | P: female_85_and_over / total_pop | - |
-| `acs_female_female_households_rate` | `FLOAT64` | Census_Tract | No | P: female_female_households / households | - |
 | `acs_female_pop_rate` | `FLOAT64` | Census_Tract | No | P: female_pop / total_pop | - |
 | `acs_female_under_5_rate` | `FLOAT64` | Census_Tract | No | P: female_under_5 / total_pop | - |
 | `acs_four_more_cars_rate` | `FLOAT64` | Census_Tract | No | P: four_more_cars / occupied_housing_units | - |
@@ -325,7 +334,6 @@ This data dictionary provides comprehensive field definitions, data types, entit
 | `acs_male_75_to_79_rate` | `FLOAT64` | Census_Tract | No | P: male_75_to_79 / total_pop | - |
 | `acs_male_80_to_84_rate` | `FLOAT64` | Census_Tract | No | P: male_80_to_84 / total_pop | - |
 | `acs_male_85_and_over_rate` | `FLOAT64` | Census_Tract | No | P: male_85_and_over / total_pop | - |
-| `acs_male_male_households_rate` | `FLOAT64` | Census_Tract | No | P: male_male_households / households | - |
 | `acs_male_pop_rate` | `FLOAT64` | Census_Tract | No | P: male_pop / total_pop | - |
 | `acs_male_under_5_rate` | `FLOAT64` | Census_Tract | No | P: male_under_5 / total_pop | - |
 | `acs_management_business_sci_arts_employed_rate` | `FLOAT64` | Census_Tract | No | P: management_business / employed_pop | - |
@@ -381,9 +389,6 @@ This data dictionary provides comprehensive field definitions, data types, entit
 | `acs_renter_occupied_housing_units_paying_cash_median_gross_rent` | `FLOAT64` | Census_Tract | No | Raw: median gross rent for cash-paying renters ($) | - |
 | `acs_sales_office_employed_rate` | `FLOAT64` | Census_Tract | No | P: sales_office / employed_pop | - |
 | `acs_some_college_and_associates_degree_rate` | `FLOAT64` | Census_Tract | No | P: some_college_and_associates_degree / pop_25_years_over | - |
-| `acs_speak_only_english_at_home_rate` | `FLOAT64` | Census_Tract | No | P: speak_only_english_at_home / pop_5_years_over | - |
-| `acs_speak_spanish_at_home_low_english_rate` | `FLOAT64` | Census_Tract | No | P: speak_spanish_at_home_low_english / pop_5_years_over | - |
-| `acs_speak_spanish_at_home_rate` | `FLOAT64` | Census_Tract | No | P: speak_spanish_at_home / pop_5_years_over | - |
 | `acs_three_cars_rate` | `FLOAT64` | Census_Tract | No | P: three_cars / occupied_housing_units | - |
 | `acs_total_pop` | `FLOAT64` | Census_Tract | No | Raw: tract total population | - |
 | `acs_two_cars_rate` | `FLOAT64` | Census_Tract | No | P: two_cars / occupied_housing_units | - |
