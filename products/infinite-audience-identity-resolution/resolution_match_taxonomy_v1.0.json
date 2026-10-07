@@ -1,0 +1,123 @@
+{
+  "title": "Infinite Audience Match Taxonomy & Options",
+  "version": "1.0",
+  "match_levels": [
+    {
+      "code": "I",
+      "name": "Individual",
+      "description": "Specific person resolved from submitted signals"
+    },
+    {
+      "code": "H",
+      "name": "Household",
+      "description": "Family co-residents at confirmed address"
+    },
+    {
+      "code": "D",
+      "name": "Digital",
+      "description": "Known digital touchpoint without confirmed name"
+    },
+    {
+      "code": "S",
+      "name": "Spatial",
+      "description": "Individual located via physical coordinate proximity"
+    },
+    {
+      "code": "A",
+      "name": "Address",
+      "description": "Physical parcel and property location only"
+    }
+  ],
+  "spatial_modes": [
+    {
+      "mode": "residential",
+      "default": true,
+      "description": "Neighborhood & multi-building moves"
+    },
+    {
+      "mode": "work",
+      "description": "Workplace to domicile commuter sheds"
+    },
+    {
+      "mode": "auto",
+      "description": "Dynamic routing by commercial classification"
+    }
+  ],
+  "match_types": [
+    {
+      "type": "graph_iag_person_id_match",
+      "levels": [
+        "I",
+        "H",
+        "D",
+        "S",
+        "A",
+        null
+      ],
+      "description": "Direct ID lookup preserves prior match level; null when no prior match provenance exists."
+    },
+    {
+      "type": "graph_name_address_match",
+      "level": "I"
+    },
+    {
+      "type": "graph_fuzzy_street_match",
+      "level": "I"
+    },
+    {
+      "type": "graph_name_email_match",
+      "levels": [
+        "I",
+        "H"
+      ]
+    },
+    {
+      "type": "graph_name_phone_match",
+      "levels": [
+        "I",
+        "H"
+      ]
+    },
+    {
+      "type": "graph_name_zip_dob_match",
+      "level": "I"
+    },
+    {
+      "type": "graph_first_dob_address_match",
+      "level": "I"
+    },
+    {
+      "type": "graph_email_match",
+      "level": "D"
+    },
+    {
+      "type": "graph_phone_match",
+      "level": "D"
+    },
+    {
+      "type": "graph_last_name_address_match",
+      "level": "H"
+    },
+    {
+      "type": "graph_address_match",
+      "level": "A"
+    },
+    {
+      "type": "probabilistic_name_address_match",
+      "level": "I"
+    },
+    {
+      "type": "spatial_match",
+      "level": "S"
+    },
+    {
+      "type": "graph_last_name_email_match",
+      "level": "H"
+    },
+    {
+      "type": "graph_last_name_phone_match",
+      "level": "H"
+    }
+  ],
+  "description": "Reference catalog, not a JSON Schema. Listed order is not match priority; confidence is reported per result."
+}

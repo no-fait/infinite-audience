@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://infiniteaudience.ai/schemas/resolution/input-contract-v1.0.json",
+  "title": "Infinite Audience Identity Resolution Input Contract",
+  "version": "1.0",
+  "type": "object",
+  "properties": {
+    "row_id": {
+      "type": "string",
+      "description": "Caller supplied unique row tracking ID",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "first_name": {
+      "type": "string",
+      "description": "Given first name"
+    },
+    "middle_name": {
+      "type": "string",
+      "description": "Middle name or initial"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Family surname"
+    },
+    "name_suffix": {
+      "type": "string",
+      "description": "Generational suffix (Jr, Sr, III)"
+    },
+    "full_name": {
+      "type": "string",
+      "description": "Combined full name"
+    },
+    "address_1": {
+      "type": "string",
+      "description": "Primary street address"
+    },
+    "address_2": {
+      "type": "string",
+      "description": "Secondary unit, suite, or apartment"
+    },
+    "city": {
+      "type": "string",
+      "description": "City or municipality"
+    },
+    "state": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "Two-letter US state code"
+    },
+    "zip": {
+      "type": "string",
+      "pattern": "^\\d{5}$",
+      "description": "5-digit US zip code"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Raw email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "10-digit US phone number"
+    },
+    "dob": {
+      "type": "string",
+      "description": "Date of birth (YYYY-MM-DD, MM/DD/YYYY, MM-DD-YYYY, or YYYY)"
+    },
+    "email_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 pre-hashed email"
+    },
+    "phone_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 pre-hashed phone"
+    },
+    "iag_person_id": {
+      "type": "string",
+      "description": "Previously issued Tier 01 Person ID"
+    },
+    "emails": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of additional emails"
+    },
+    "phones": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of additional phones"
+    },
+    "emails_sha256": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "phones_sha256": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "addresses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "address_1": {
+            "type": "string"
+          },
+          "address_2": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "zip": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "address_1",
+          "zip"
+        ]
+      }
+    }
+  },
+  "additionalProperties": true,
+  "description": "Recommended input record shapes, not the complete API request schema. The production OpenAPI contract governs API validation."
+}
