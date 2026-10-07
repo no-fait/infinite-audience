@@ -60,23 +60,13 @@ jobs:
         with:
           ref: ${{ steps.release_meta.outputs.tag }}
 
-      - name: Verify Identity Release Notes & Assets
+      - name: Verify Pinned Identity Release Bundle
         if: steps.release_meta.outputs.identity == 'true'
         env:
           TAG: ${{ steps.release_meta.outputs.tag }}
-          VER: ${{ steps.release_meta.outputs.version }}
         run: |
           PRODUCT_DIR=products/infinite-audience-identity-resolution
-          for FILE in \
-            "$PRODUCT_DIR/releases/$TAG.md" \
-            "$PRODUCT_DIR/SPECIFICATION.md" \
-            "$PRODUCT_DIR/resolution_input_contract_$VER.json" \
-            "$PRODUCT_DIR/resolution_match_taxonomy_$VER.json"; do
-            if [[ ! -s "$FILE" ]]; then
-              echo "::error::Missing or empty identity release file: $FILE"
-              exit 1
-            fi
-          done
+          python3 "$PRODUCT_DIR/verify-identity-release.py" "$PRODUCT_DIR" --tag "$TAG"
 
       - name: Generate Finn Bot Token (if App configured)
         id: finn_token
@@ -112,6 +102,7 @@ jobs:
           body_path: products/infinite-audience-identity-resolution/releases/${{ steps.release_meta.outputs.tag }}.md
           fail_on_unmatched_files: true
           files: |
+            products/infinite-audience-identity-resolution/release-manifest.json
             products/infinite-audience-identity-resolution/SPECIFICATION.md
             products/infinite-audience-identity-resolution/resolution_input_contract_${{ steps.release_meta.outputs.version }}.json
             products/infinite-audience-identity-resolution/resolution_match_taxonomy_${{ steps.release_meta.outputs.version }}.json
