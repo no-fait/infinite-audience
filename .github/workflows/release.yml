@@ -32,15 +32,51 @@ jobs:
 
       - name: Determine Release Tag & Product Name
         id: release_meta
+        env:
+          TAG: ${{ github.event.inputs.tag || github.ref_name }}
         run: |
-          TAG="${{ github.event.inputs.tag || github.ref_name }}"
-          echo "tag=$TAG" >> $GITHUB_OUTPUT
-          if [[ "$TAG" =~ ^iag- ]]; then
+          if [[ "$TAG" == id-* ]]; then
+            if [[ ! "$TAG" =~ ^id-v[0-9]+(\.[0-9]+)+$ ]]; then
+              echo "::error::Identity release tags must use id-v<version>, for example id-v1.0."
+              exit 1
+            fi
+            VER="${TAG#id-}"
+            {
+              echo "identity=true"
+              echo "version=$VER"
+              echo "title=Infinite Audience Identity Resolution & Enrichment $VER"
+            } >> "$GITHUB_OUTPUT"
+          elif [[ "$TAG" =~ ^iag- ]]; then
             VER="${TAG#iag-}"
-            echo "title=Infinite Audience Graph $VER" >> $GITHUB_OUTPUT
+            echo "title=Infinite Audience Graph $VER" >> "$GITHUB_OUTPUT"
           else
-            echo "title=Infinite Audience Release $TAG" >> $GITHUB_OUTPUT
+            echo "title=Infinite Audience Release $TAG" >> "$GITHUB_OUTPUT"
           fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout Identity Release Tag
+        if: steps.release_meta.outputs.identity == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.release_meta.outputs.tag }}
+
+      - name: Verify Identity Release Notes & Assets
+        if: steps.release_meta.outputs.identity == 'true'
+        env:
+          TAG: ${{ steps.release_meta.outputs.tag }}
+          VER: ${{ steps.release_meta.outputs.version }}
+        run: |
+          PRODUCT_DIR=products/infinite-audience-identity-resolution
+          for FILE in \
+            "$PRODUCT_DIR/releases/$TAG.md" \
+            "$PRODUCT_DIR/SPECIFICATION.md" \
+            "$PRODUCT_DIR/resolution_input_contract_$VER.json" \
+            "$PRODUCT_DIR/resolution_match_taxonomy_$VER.json"; do
+            if [[ ! -s "$FILE" ]]; then
+              echo "::error::Missing or empty identity release file: $FILE"
+              exit 1
+            fi
+          done
 
       - name: Generate Finn Bot Token (if App configured)
         id: finn_token
@@ -51,6 +87,7 @@ jobs:
           private-key: ${{ secrets.FINN_PRIVATE_KEY }}
 
       - name: Publish GitHub Release
+        if: steps.release_meta.outputs.identity != 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.release_meta.outputs.tag }}
@@ -60,5 +97,23 @@ jobs:
           generate_release_notes: false
           files: |
             dist/*
+        env:
+          GITHUB_TOKEN: ${{ steps.finn_token.outputs.token || secrets.GITHUB_TOKEN }}
+
+      - name: Create Identity Release Draft
+        if: steps.release_meta.outputs.identity == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.release_meta.outputs.tag }}
+          name: ${{ steps.release_meta.outputs.title }}
+          draft: true
+          prerelease: false
+          generate_release_notes: false
+          body_path: products/infinite-audience-identity-resolution/releases/${{ steps.release_meta.outputs.tag }}.md
+          fail_on_unmatched_files: true
+          files: |
+            products/infinite-audience-identity-resolution/SPECIFICATION.md
+            products/infinite-audience-identity-resolution/resolution_input_contract_${{ steps.release_meta.outputs.version }}.json
+            products/infinite-audience-identity-resolution/resolution_match_taxonomy_${{ steps.release_meta.outputs.version }}.json
         env:
           GITHUB_TOKEN: ${{ steps.finn_token.outputs.token || secrets.GITHUB_TOKEN }}
