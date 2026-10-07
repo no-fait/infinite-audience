@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "source_repository": "no-fait/platform",
+  "source_revision": "9baab9268c88f4ab1d8ea0bf2bae1c0280aefe1b",
+  "files": {
+    "SPECIFICATION.md": "0548fc9074306369322f73268ae8c581742e19e3d35041a80cd2dbb0e3b31b34",
+    "resolution_input_contract_v1.0.json": "c57a3ace5e9a63b95e19b49050694d31c0412cf2615bd58ee86d5658221bb329",
+    "resolution_match_taxonomy_v1.0.json": "7461fc9abbc6c742cc81690808c58c76eef1e4a8c1d8a695aac46f76cb7770b1",
+    "releases/id-v1.0.md": "d4c7382c7c69f42fa2d75a01e662f358c90fa334c6a96b58d1e6c27d75ddc73b",
+    "verify-identity-release.py": "f778d0b6a097e4407cc7a63f836cbad6b3d10d1397604b32a5a4fdfdf500a62e"
+  }
+}

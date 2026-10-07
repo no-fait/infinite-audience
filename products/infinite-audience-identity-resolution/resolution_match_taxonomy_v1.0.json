@@ -1,49 +1,72 @@
 {
   "title": "Infinite Audience Match Taxonomy & Options",
   "version": "1.0",
+  "description": "Reference catalog, not a validation schema. Listed order is not match priority.",
   "match_levels": [
     {
       "code": "I",
-      "name": "Individual",
-      "description": "Specific person resolved from submitted signals"
+      "name": "Individual"
     },
     {
       "code": "H",
-      "name": "Household",
-      "description": "Family co-residents at confirmed address"
+      "name": "Household"
     },
     {
       "code": "D",
-      "name": "Digital",
-      "description": "Known digital touchpoint without confirmed name"
+      "name": "Digital"
     },
     {
       "code": "S",
-      "name": "Spatial",
-      "description": "Individual located via physical coordinate proximity"
+      "name": "Spatial"
     },
     {
       "code": "A",
-      "name": "Address",
-      "description": "Physical parcel and property location only"
+      "name": "Address"
     }
   ],
   "spatial_modes": [
     {
       "mode": "residential",
-      "default": true,
-      "description": "Neighborhood & multi-building moves"
+      "default": true
     },
     {
       "mode": "work",
-      "description": "Workplace to domicile commuter sheds"
+      "default": false
     },
     {
       "mode": "auto",
-      "description": "Dynamic routing by commercial classification"
+      "default": false
     }
   ],
   "match_types": [
+    {
+      "type": "graph_address_match",
+      "levels": [
+        "A"
+      ],
+      "description": "Street address + zip code alone (property and location profile)"
+    },
+    {
+      "type": "graph_email_match",
+      "levels": [
+        "D"
+      ],
+      "description": "Known email alone"
+    },
+    {
+      "type": "graph_first_dob_address_match",
+      "levels": [
+        "I"
+      ],
+      "description": "First name + date of birth + address (resolves across surname changes)"
+    },
+    {
+      "type": "graph_fuzzy_street_match",
+      "levels": [
+        "I"
+      ],
+      "description": "Name + street with highway/route alias or minor spelling variation"
+    },
     {
       "type": "graph_iag_person_id_match",
       "levels": [
@@ -54,70 +77,79 @@
         "A",
         null
       ],
-      "description": "Direct ID lookup preserves prior match level; null when no prior match provenance exists."
+      "description": "Recognized ID; preserves prior match provenance"
+    },
+    {
+      "type": "graph_last_name_address_match",
+      "levels": [
+        "H"
+      ],
+      "description": "Last name + address (household co-resident or family offer)"
+    },
+    {
+      "type": "graph_last_name_email_match",
+      "levels": [
+        "H"
+      ],
+      "description": "Last name + email"
+    },
+    {
+      "type": "graph_last_name_phone_match",
+      "levels": [
+        "H"
+      ],
+      "description": "Last name + phone"
     },
     {
       "type": "graph_name_address_match",
-      "level": "I"
-    },
-    {
-      "type": "graph_fuzzy_street_match",
-      "level": "I"
+      "levels": [
+        "I"
+      ],
+      "description": "First name + last name + street address + zip code"
     },
     {
       "type": "graph_name_email_match",
       "levels": [
-        "I",
-        "H"
-      ]
+        "H",
+        "I"
+      ],
+      "description": "First name + last name + email (raw or pre-hashed)"
     },
     {
       "type": "graph_name_phone_match",
       "levels": [
-        "I",
-        "H"
-      ]
+        "H",
+        "I"
+      ],
+      "description": "First name + last name + phone (raw or pre-hashed)"
     },
     {
       "type": "graph_name_zip_dob_match",
-      "level": "I"
-    },
-    {
-      "type": "graph_first_dob_address_match",
-      "level": "I"
-    },
-    {
-      "type": "graph_email_match",
-      "level": "D"
+      "levels": [
+        "I"
+      ],
+      "description": "First name + last name + zip code + date of birth (no street needed)"
     },
     {
       "type": "graph_phone_match",
-      "level": "D"
-    },
-    {
-      "type": "graph_last_name_address_match",
-      "level": "H"
-    },
-    {
-      "type": "graph_address_match",
-      "level": "A"
+      "levels": [
+        "D"
+      ],
+      "description": "Known phone number alone"
     },
     {
       "type": "probabilistic_name_address_match",
-      "level": "I"
+      "levels": [
+        "I"
+      ],
+      "description": "Weighted agreement across name, address, unit, or neighboring zip"
     },
     {
       "type": "spatial_match",
-      "level": "S"
-    },
-    {
-      "type": "graph_last_name_email_match",
-      "level": "H"
-    },
-    {
-      "type": "graph_last_name_phone_match",
-      "level": "H"
+      "levels": [
+        "S"
+      ],
+      "description": "Name + physical coordinate proximity within neighborhood or commuter shed"
     }
-  ],
-  "description": "Reference catalog, not a JSON Schema. Listed order is not match priority; confidence is reported per result."
+  ]
 }

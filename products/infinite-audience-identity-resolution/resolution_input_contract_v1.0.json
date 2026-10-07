@@ -1,141 +1,112 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://infiniteaudience.ai/schemas/resolution/input-contract-v1.0.json",
-  "title": "Infinite Audience Identity Resolution Input Contract",
+  "title": "Identity Resolution Input Record",
   "version": "1.0",
   "type": "object",
+  "additionalProperties": true,
   "properties": {
     "row_id": {
       "type": "string",
-      "description": "Caller supplied unique row tracking ID",
       "minLength": 1,
-      "pattern": "\\S"
-    },
-    "first_name": {
-      "type": "string",
-      "description": "Given first name"
-    },
-    "middle_name": {
-      "type": "string",
-      "description": "Middle name or initial"
-    },
-    "last_name": {
-      "type": "string",
-      "description": "Family surname"
-    },
-    "name_suffix": {
-      "type": "string",
-      "description": "Generational suffix (Jr, Sr, III)"
-    },
-    "full_name": {
-      "type": "string",
-      "description": "Combined full name"
-    },
-    "address_1": {
-      "type": "string",
-      "description": "Primary street address"
-    },
-    "address_2": {
-      "type": "string",
-      "description": "Secondary unit, suite, or apartment"
-    },
-    "city": {
-      "type": "string",
-      "description": "City or municipality"
-    },
-    "state": {
-      "type": "string",
-      "pattern": "^[A-Z]{2}$",
-      "description": "Two-letter US state code"
-    },
-    "zip": {
-      "type": "string",
-      "pattern": "^\\d{5}$",
-      "description": "5-digit US zip code"
+      "pattern": "\\S",
+      "description": "Optional correlation ID, preserved exactly. Must contain at least one non-whitespace character. Omitted IDs default to the record's 1-indexed string position (\"1\", \"2\", ...). All effective IDs must be unique across this request, including custom/generated IDs. Duplicate IDs reject the whole request with 400 DUPLICATE_ROW_ID; invalid supplied IDs return 400 INVALID_ROW_ID.\n"
     },
     "email": {
       "type": "string",
       "format": "email",
-      "description": "Raw email address"
+      "description": "Primary email address."
     },
     "phone": {
       "type": "string",
-      "description": "10-digit US phone number"
-    },
-    "dob": {
-      "type": "string",
-      "description": "Date of birth (YYYY-MM-DD, MM/DD/YYYY, MM-DD-YYYY, or YYYY)"
+      "description": "Phone number in any standard format."
     },
     "email_sha256": {
       "type": "string",
-      "pattern": "^[a-f0-9]{64}$",
-      "description": "SHA-256 pre-hashed email"
+      "description": "Lowercase-hex SHA-256 hash of a normalized email address, for clients whose own systems never expose raw email addresses (e.g. data co-op / clean-room partners using the same hashing convention). The platform passes this through without re-hashing. Do not submit an already-hashed value in `email` — it would be hashed a second time and never match.\n"
     },
     "phone_sha256": {
       "type": "string",
-      "pattern": "^[a-f0-9]{64}$",
-      "description": "SHA-256 pre-hashed phone"
+      "description": "Lowercase-hex SHA-256 hash of a normalized phone number. Same pre-hashed semantics as `email_sha256`.\n"
     },
-    "iag_person_id": {
+    "full_name": {
       "type": "string",
-      "description": "Previously issued Tier 01 Person ID"
+      "description": "Optional convenience field. When provided (and first_name / last_name are absent), the engine parses this into first_name, middle_name, last_name, and name_suffix automatically. The parsed components are used for matching; the original full_name value is echoed back unchanged.\n"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "middle_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "name_suffix": {
+      "type": "string",
+      "description": "Generational suffix (e.g. `JR`, `SR`, `III`)."
     },
     "emails": {
       "type": "array",
       "items": {
+        "type": "string",
+        "format": "email"
+      },
+      "description": "Additional raw email addresses beyond `email`, tried as extra match permutations.\n"
+    },
+    "emails_sha256": {
+      "type": "array",
+      "items": {
         "type": "string"
       },
-      "description": "List of additional emails"
+      "description": "Pre-hashed counterpart to `emails`."
     },
     "phones": {
       "type": "array",
       "items": {
         "type": "string"
       },
-      "description": "List of additional phones"
-    },
-    "emails_sha256": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^[a-f0-9]{64}$"
-      }
+      "description": "Additional raw phone numbers beyond `phone`, tried as extra match permutations.\n"
     },
     "phones_sha256": {
       "type": "array",
       "items": {
-        "type": "string",
-        "pattern": "^[a-f0-9]{64}$"
-      }
+        "type": "string"
+      },
+      "description": "Pre-hashed counterpart to `phones`."
     },
     "addresses": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "address_1": {
-            "type": "string"
-          },
-          "address_2": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "state": {
-            "type": "string"
-          },
-          "zip": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "address_1",
-          "zip"
-        ]
-      }
+        "$ref": "#/components/schemas/MatchAddress"
+      },
+      "description": "Additional addresses beyond `address_1`/`city`/`state`/`zip`, tried as extra match permutations.\n"
+    },
+    "address_1": {
+      "type": "string",
+      "description": "Street address line 1."
+    },
+    "address_2": {
+      "type": "string",
+      "description": "Street address line 2 (apt, suite, etc.)."
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string",
+      "description": "Two-letter US state code."
+    },
+    "zip": {
+      "type": "string",
+      "description": "5- or 9-digit ZIP code."
+    },
+    "dob": {
+      "type": "string",
+      "description": "Date of birth — any parseable date format (e.g. YYYY-MM-DD)."
+    },
+    "iag_person_id": {
+      "type": "string",
+      "description": "A previously-issued tier `01` person ID from this organization (format `CLIENTCODE_TIER_HASH`, e.g. returned by a prior call to this endpoint, a matched delivery, or a licensed audience delivery). A valid ID can go directly to refresh without repeating identity matching. A foreign, malformed, or derived tier `02`–`05` ID cannot be used for direct refresh; the row falls back to its other identity signals, if any.\n"
     }
-  },
-  "additionalProperties": true,
-  "description": "Recommended input record shapes, not the complete API request schema. The production OpenAPI contract governs API validation."
+  }
 }
