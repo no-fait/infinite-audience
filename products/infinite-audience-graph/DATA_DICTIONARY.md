@@ -1,6 +1,6 @@
 # Infinite Audience Graph — Data Dictionary
 
-**Version:** `v1.3.2.1` | **Generated:** September 30, 2026 | **Total Attributes:** 539
+**Version:** `v1.4.3.0` | **Generated:** October 27, 2026 | **Total Attributes:** 546
 
 This data dictionary provides comprehensive field definitions, data types, entity levels, PII classifications, and value mappings for the Infinite Audience Graph (IAG).
 
@@ -11,10 +11,11 @@ This data dictionary provides comprehensive field definitions, data types, entit
 - [Identity](#identity) (17 attributes)
 - [Audiences & Segments](#audiences--segments) (1 attributes)
 - [Demographics & Household](#demographics--household) (10 attributes)
-- [Financial & Property](#financial--property) (10 attributes)
+- [Financial & Property](#financial--property) (9 attributes)
+- [Professional](#professional) (6 attributes)
 - [Media & Behavioral](#media--behavioral) (12 attributes)
 - [Geography](#geography) (13 attributes)
-- [Land Context](#land-context) (21 attributes)
+- [Land Context](#land-context) (23 attributes)
 - [Census Demographics & Socioeconomic](#census-demographics--socioeconomic) (243 attributes)
 - [Health](#health) (40 attributes)
 - [Environment & Risk](#environment--risk) (10 attributes)
@@ -55,7 +56,7 @@ This data dictionary provides comprehensive field definitions, data types, entit
 
 | Column Name | Type | Level | PII | Description | Value Mappings / Notes |
 | :--- | :--- | :--- | :---: | :--- | :--- |
-| `infinite_audiences` | `ARRAY<STRING>` | Individual | No | Array of active Infinite Audience cohorts | `Boomerang Post-Grad Adult`: Boomerang Post-Grad Adult<br>`Interrupted Empty Nester Parent`: Interrupted Empty Nester Parent |
+| `infinite_audiences` | `ARRAY<STRING>` | Individual | No | Array of active Infinite Audience cohorts | `Aviation: Certified Flight Instructor`: Aviation: Certified Flight Instructor<br>`Aviation: Commercial Airline Captain`: Aviation: Commercial Airline Captain<br>`Aviation: Commercial Remote Drone Pilot`: Aviation: Commercial Remote Drone Pilot<br>`Civic: Foundation Trustee`: Civic: Foundation Trustee<br>`Civic: Labor Union Executive`: Civic: Labor Union Executive<br>`Civic: Nonprofit & Institutional Executive`: Civic: Nonprofit & Institutional Executive<br>`Corporate: 401(k) & Benefit Plan Fiduciary`: Corporate: 401(k) & Benefit Plan Fiduciary<br>`Corporate: C-Suite Public Insider`: Corporate: C-Suite Public Insider<br>... (+158 more) |
 
 ---
 
@@ -78,20 +79,33 @@ This data dictionary provides comprehensive field definitions, data types, entit
 ---
 
 ## Financial & Property
-*Estimated financial capacity, property ownership characteristics, and professional profile indicators*
+*Estimated financial capacity and residential property ownership characteristics*
 
 | Column Name | Type | Level | PII | Description | Value Mappings / Notes |
 | :--- | :--- | :--- | :---: | :--- | :--- |
 | `education_level` | `STRING` | Individual | No | Highest education level attained (e.g., High School, College, Graduate School) | `Some High School`: Some High School<br>`High School`: High School<br>`Some College`: Some College<br>`Vocational`: Vocational<br>`College`: College<br>`Graduate School`: Graduate School |
 | `estimated_household_income` | `STRING` | Household | No | Estimated household income bracket (e.g., $50,000 - $59,999, $500,000+) | `Under $20,000`: Under $20,000<br>`$20,000 - $29,999`: $20,000 – $29,999<br>`$30,000 - $39,999`: $30,000 – $39,999<br>`$40,000 - $49,999`: $40,000 – $49,999<br>`$50,000 - $59,999`: $50,000 – $59,999<br>`$60,000 - $74,999`: $60,000 – $74,999<br>`$75,000 - $99,999`: $75,000 – $99,999<br>`$100,000 - $124,999`: $100,000 – $124,999<br>... (+5 more) |
 | `net_worth` | `STRING` | Household | No | Composite net worth bracket (e.g., $0 or Less, $100,000 - $149,999, $1,000,000+) | `$0 or Less`: $0 or Less<br>`$1 - $24,999`: $1 – $24,999<br>`$25,000 - $49,999`: $25,000 – $49,999<br>`$50,000 - $74,999`: $50,000 – $74,999<br>`$75,000 - $99,999`: $75,000 – $99,999<br>`$100,000 - $149,999`: $100,000 – $149,999<br>`$150,000 - $249,999`: $150,000 – $249,999<br>`$250,000 - $374,999`: $250,000 – $374,999<br>... (+4 more) |
-| `occupation` | `STRING` | Individual | No | Labeled occupation and industry division (e.g., Medical, Finance, Blue Collar) | `Administrative / Managerial`: Administrative / Managerial<br>`Agriculture / Environment`: Agriculture / Environment<br>`Blue Collar`: Blue Collar<br>`Clerical`: Clerical<br>`Education`: Education<br>`Finance`: Finance<br>`Government / Military`: Government / Military<br>`Homemaker`: Homemaker<br>... (+9 more) |
 | `homeowner_status` | `STRING` | Household | No | Homeowner/renter status | `Homeowner`: Homeowner<br>`Renter`: Renter |
 | `length_of_residence` | `NUMERIC` | Household | No | Estimated number of years at the current address, expressed as an integer from 0 to 15. A value of 0 indicates less than one year; 15 indicates 15 or more years | `0`: Less than 1 Year<br>`1`: 1 Year<br>`2`: 2 Years<br>`3`: 3 Years<br>`4`: 4 Years<br>`5`: 5 Years<br>`6`: 6 Years<br>`7`: 7 Years<br>... (+8 more) |
 | `dwelling_type` | `STRING` | Household | No | Dwelling type category (e.g., Single Family, Multi-Family) | `Single Family`: Single Family<br>`Multi-Family`: Multi-Family |
 | `market_home_value` | `STRING` | Household | No | Estimated market value of home bracket (e.g., $100,000 - $124,999, $1,000,000+) | `$1,000 - $24,999`: $1,000 – $24,999<br>`$25,000 - $49,999`: $25,000 – $49,999<br>`$50,000 - $74,999`: $50,000 – $74,999<br>`$75,000 - $99,999`: $75,000 – $99,999<br>`$100,000 - $124,999`: $100,000 – $124,999<br>`$125,000 - $149,999`: $125,000 – $149,999<br>`$150,000 - $174,999`: $150,000 – $174,999<br>`$175,000 - $199,999`: $175,000 – $199,999<br>... (+11 more) |
 | `home_year_built` | `STRING` | Household | No | Year the home was built (e.g. 1995) | - |
 | `home_has_pool` | `BOOL` | Address | No | Indicates whether a swimming pool is present on the residential property. | - |
+
+---
+
+## Professional
+*Career seniority, industry specialization, functional discipline, and job titles across the workforce*
+
+| Column Name | Type | Level | PII | Description | Value Mappings / Notes |
+| :--- | :--- | :--- | :---: | :--- | :--- |
+| `occupation` | `STRING` | Individual | No | Consumer's macro occupation and industry division across 17 canonical categories (e.g., Medical, Finance, Blue Collar). | `Administrative / Managerial`: Administrative / Managerial<br>`Agriculture / Environment`: Agriculture / Environment<br>`Blue Collar`: Blue Collar<br>`Clerical`: Clerical<br>`Education`: Education<br>`Finance`: Finance<br>`Government / Military`: Government / Military<br>`Homemaker`: Homemaker<br>... (+9 more) |
+| `professional_tier` | `STRING` | Individual | No | Universal 9-tier career seniority and organizational standing across the workforce. | `Business Owner & Principal`: Business Owner & Principal<br>`C-Suite & Executive`: C-Suite & Executive<br>`VP & Department Head`: VP & Department Head<br>`Director & Senior Manager`: Director & Senior Manager<br>`Manager & Supervisor`: Manager & Supervisor<br>`Senior Practitioner & Principal Specialist`: Senior Practitioner & Principal Specialist<br>`Mid-Level & Licensed Professional`: Mid-Level & Licensed Professional<br>`Skilled Trade & Technical`: Skilled Trade & Technical<br>... (+1 more) |
+| `professional_specialty` | `STRING` | Individual | No | Primary professional focus area, industry specialization, or functional discipline (e.g., Software, IT & Cloud Services, Management & Business Consulting, Real Estate Brokerage & Leasing, Architecture, Engineering & Surveying). | - |
+| `professional_specialties` | `ARRAY<STRING>` | Individual | No | All professional focus areas, industry specializations, and functional disciplines associated with the person (e.g., Software, IT & Cloud Services, Management & Business Consulting, Real Estate Brokerage & Leasing, Architecture, Engineering & Surveying). | - |
+| `professional_title` | `STRING` | Individual | No | Primary job title or role (e.g., Chief Executive Officer, Software Engineer, Managing Partner). | - |
+| `professional_titles` | `ARRAY<STRING>` | Individual | No | All job titles and roles held by the person (e.g., Chief Executive Officer, Board Director, Managing Partner). | - |
 
 ---
 
@@ -162,6 +176,8 @@ This data dictionary provides comprehensive field definitions, data types, entit
 | `dist_ski_resort_m` | `FLOAT64` | Address | No | Distance in meters to the nearest major ski resort | - |
 | `dist_stadium_m` | `FLOAT64` | Address | No | Distance in meters to the nearest stadium | - |
 | `dist_subway_station_m` | `FLOAT64` | Address | No | Distance in meters to the nearest subway station | - |
+| `flag_lives_near_golf_course` | `BOOL` | Address | No | Address falls within 250 meters of a golf course, but outside the course itself | - |
+| `flag_lives_in_golf_community` | `BOOL` | Address | No | Address falls within a residential golf community | - |
 
 ---
 

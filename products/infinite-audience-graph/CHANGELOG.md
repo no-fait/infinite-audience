@@ -2,6 +2,45 @@
 
 All notable releases, schema evolutions, and coverage changes for the Infinite Audience Graph are documented here.
 
+## [Infinite Audience Graph v1.4.3.0] - October 28, 2026
+
+**Release Tag:** `iag-v1.4.3.0` | **Vintage:** October 2026
+
+### 📊 Graph Scale
+- **Resolved Individuals:** **243,824,319** verified consumer profiles
+
+### 🆕 Added Attributes (5)
+- `professional_tier` (`STRING` • *Professional*): Universal 9-tier career seniority and organizational standing across the workforce.
+- `professional_specialty` (`STRING` • *Professional*): Primary professional focus area, industry specialization, or functional discipline (e.g., Software, IT & Cloud Services, Management & Business Consulting, Real Estate Brokerage & Leasing, Architecture, Engineering & Surveying).
+- `professional_specialties` (`ARRAY<STRING>` • *Professional*): All professional focus areas, industry specializations, and functional disciplines associated with the person (e.g., Software, IT & Cloud Services, Management & Business Consulting, Real Estate Brokerage & Leasing, Architecture, Engineering & Surveying).
+- `professional_title` (`STRING` • *Professional*): Primary job title or role (e.g., Chief Executive Officer, Software Engineer, Managing Partner).
+- `professional_titles` (`ARRAY<STRING>` • *Professional*): All job titles and roles held by the person (e.g., Chief Executive Officer, Board Director, Managing Partner).
+
+### 🚀 What's New in v1.4.3.0
+
+#### 1. National Identity Graph Expansion (`243.8M` Verified Consumer Profiles)
+- **Expanded Consumer Footprint (`+28.1M` Resolved Individuals)**: Increased verified US adult coverage from `215,677,380` to **243,824,319** resolved individuals (`+28,146,939` / `+13.1%`).
+- **Verification-Driven Survivor Selection**: Upgraded entity resolution prioritization so multi-source verified identity anchors take precedence during record consolidation while preserving full contact, household, and professional linkage across merged records.
+
+#### 2. New 15th Core Category: `Professional`
+- **Dedicated `Professional` Enrichment Dimension**: Introduced `Professional` as the 15th canonical category in the Infinite Audience Graph, linking verified professional credentials, specializations, and job roles directly to personal household identity.
+- **5 New Customer-Facing `Professional` Attributes**:
+  - **Professional Tier** (`professional_tier` • `STRING`): Universal 9-tier career seniority and organizational standing across the workforce (`Business Owner & Principal`, `C-Suite & Executive`, `VP & Department Head`, `Director & Senior Manager`, `Manager & Supervisor`, `Senior Practitioner & Principal Specialist`, `Mid-Level & Licensed Professional`, `Skilled Trade & Technical`, `Administrative, Support & Entry-Level`).
+  - **Professional Specialty** (`professional_specialty` • `STRING`): Primary professional focus area, industry specialization, or functional discipline (e.g., Software, IT & Cloud Services, Management & Business Consulting, Real Estate Brokerage & Leasing, Architecture, Engineering & Surveying).
+  - **Professional Specialties** (`professional_specialties` • `ARRAY<STRING>`): All professional focus areas, industry specializations, and functional disciplines associated with the person (e.g., Software, IT & Cloud Services, Management & Business Consulting, Real Estate Brokerage & Leasing, Architecture, Engineering & Surveying).
+  - **Professional Title** (`professional_title` • `STRING`): Primary job title or role (e.g., Chief Executive Officer, Software Engineer, Managing Partner).
+  - **Professional Titles** (`professional_titles` • `ARRAY<STRING>`): All job titles and roles held by the person (e.g., Chief Executive Officer, Board Director, Managing Partner).
+
+#### 3. Expanded `Infinite Audiences` Catalog (`166` Ready-to-Activate Cohorts)
+- **166 Ready-to-Activate Pre-Built Cohorts**: Expanded the `infinite_audiences` catalog to **166** ready-to-activate cohorts across 9 governed domains (`HCP`, `SBO`, `Interests`, `Corporate`, `Wealth`, `Aviation`, `Civic`, `Household`, `Finance`).
+- **Healthcare Professionals (`HCP:`) (`121` Cohorts)**: Added comprehensive clinical targeting across Physicians & Surgeons (`MD / DO`), Nurses (`RN`, `NP`, `CRNA`, `LPN`), Dentists (`DDS / DMD`), Pharmacists, Behavioral & Mental Health Clinicians (`LCSW`, `LPC`, `LMFT`, `BCBA`), Physical & Occupational Therapists (`PT`, `OT`, `SLP`), Private Practice Owners, High-Volume Medicare Prescribers, Key Opinion Leaders (`KOL`), and 70+ medical, surgical, and allied health subspecialties.
+- **Small Business Owners (`SBO:`) (`21` Cohorts)**: Added verified business ownership cohorts including Small Business Employers (`2+ Employees`), High-Capitalization Commercial Enterprises (`$250k+ Loan`), Construction & Specialty Trade Contractors, Real Estate Brokers & Property Management Owners, Legal Practice & Law Firm Partners, Accounting, Tax & Financial Practice Owners, Restaurant, Hospitality & Craft Beverage Owners, Commercial Trucking & Fleet Operators, Agricultural Producers, Federal Contractors, and Veteran-, Woman-, and Minority-Owned Small Businesses.
+- **Corporate Leadership (`Corporate:`), Institutional Finance (`Finance:`), & Civic (`Civic:`) (`8` Cohorts)**: Added C-Suite Public Insiders, Public Company Board Directors & Principal Shareholders, 401(k) & Benefit Plan Fiduciaries, Foreign Principal & Sovereign Representatives, PE / VC General Partners, Nonprofit & Institutional Executives, Foundation Trustees, and Labor Union Executives.
+- **Patented Inventors & Technical (`Interests:`), Aviation (`Aviation:`), & Ultra-High-Net-Worth (`Wealth:`) (`14` Cohorts)**: Added Patented Inventors, Serial Patented Inventors (`3+ Patents`), AI & Machine Learning Inventors, Biotech & Life Sciences Inventors, Clean Energy & Climate Tech Inventors, Commercial Airline Captains, Certified Flight Instructors, Commercial Remote Drone Pilots, Private Aviators, Amateur Radio Operators, Private Jet Owners, Private Aircraft Owners, Superyacht Owners, and Luxury Yacht & Cruiser Owners.
+
+---
+*Maintained by **Finn** (<finn@infiniteaudience.ai>) • Infinite Audience*
+
 ## [Infinite Audience Graph v1.3.2.1] - September 30, 2026
 
 **Release Tag:** `iag-v1.3.2.1` | **Vintage:** September 2026
