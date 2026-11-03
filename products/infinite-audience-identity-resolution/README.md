@@ -1,6 +1,6 @@
 # Infinite Audience Identity Resolution & Enrichment
 
-[![Specification](https://img.shields.io/badge/Specification-v1.0-blue.svg)](SPECIFICATION.md)
+[![Specification](https://img.shields.io/badge/Specification-v1.1-blue.svg)](SPECIFICATION.md)
 [![Match Levels](https://img.shields.io/badge/Match_Levels-5_Levels-green.svg)](#-match-levels)
 [![Match Types](https://img.shields.io/badge/Match_Types-15_Types-purple.svg)](#-match-types-taxonomy)
 
@@ -34,15 +34,15 @@ Official public specification, input contracts, match type taxonomy, and release
 
 - **[Specification](SPECIFICATION.md)**: Full baseline specification covering input fields, normalization rules, matching cascade, and record licensing.
 - **[Interactive Documentation](https://docs.infiniteaudience.ai/product/identity-resolution)**: Live documentation, interactive examples, and platform guides.
-- **[Latest Release Notes](releases/id-v1.0.md)**: Official release notes for version `id-v1.0`.
+- **[Latest Release Notes](releases/id-v1.1.md)**: Official release notes for version `id-v1.0`.
 
 ---
 
 ## 📦 Downloadable Assets & Schemas
 
 Every release publishes machine-readable assets attached to GitHub Releases:
-- `resolution_input_contract_v1.0.json`: Recommended input record JSON schema (production OpenAPI remains authoritative).
-- `resolution_match_taxonomy_v1.0.json`: Machine-readable catalog of match options, levels, and all 15 supported match types.
+- `resolution_input_contract_v1.1.json`: Recommended input record JSON schema (production OpenAPI remains authoritative).
+- `resolution_match_taxonomy_v1.1.json`: Machine-readable catalog of match options, levels, and all 15 supported match types.
 - `SPECIFICATION.md`: Standalone markdown export of the complete identity resolution specification.
 
 ---

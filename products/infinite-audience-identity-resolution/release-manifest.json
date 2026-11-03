@@ -1,12 +1,12 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "source_repository": "no-fait/platform",
-  "source_revision": "9baab9268c88f4ab1d8ea0bf2bae1c0280aefe1b",
+  "source_revision": "88b06b42d9cac9d85702ffbdb1c160b34cb05159",
   "files": {
-    "SPECIFICATION.md": "0548fc9074306369322f73268ae8c581742e19e3d35041a80cd2dbb0e3b31b34",
-    "resolution_input_contract_v1.0.json": "c57a3ace5e9a63b95e19b49050694d31c0412cf2615bd58ee86d5658221bb329",
-    "resolution_match_taxonomy_v1.0.json": "7461fc9abbc6c742cc81690808c58c76eef1e4a8c1d8a695aac46f76cb7770b1",
-    "releases/id-v1.0.md": "d4c7382c7c69f42fa2d75a01e662f358c90fa334c6a96b58d1e6c27d75ddc73b",
+    "SPECIFICATION.md": "71ebd201290e9308f0469978705f9355c5d4c72e74d152fd6c186bbe493c4e7a",
+    "resolution_input_contract_v1.1.json": "a340df097ff64a5faa535ef208265b8da9735cc637331cb98cd5130792f54c7c",
+    "resolution_match_taxonomy_v1.1.json": "281fee4ce9c4e611857e12ab1a8c8abfc46371ffbe65f4262cf98a46b0675411",
+    "releases/id-v1.1.md": "d87f7b1acb0e814aed0a6869338f4ab30b3dba8d6eee935ee34d3b689699d03e",
     "verify-identity-release.py": "f778d0b6a097e4407cc7a63f836cbad6b3d10d1397604b32a5a4fdfdf500a62e"
   }
 }

@@ -1,0 +1,155 @@
+{
+  "title": "Infinite Audience Match Taxonomy & Options",
+  "version": "1.1",
+  "description": "Reference catalog, not a validation schema. Listed order is not match priority.",
+  "match_levels": [
+    {
+      "code": "I",
+      "name": "Individual"
+    },
+    {
+      "code": "H",
+      "name": "Household"
+    },
+    {
+      "code": "D",
+      "name": "Digital"
+    },
+    {
+      "code": "S",
+      "name": "Spatial"
+    },
+    {
+      "code": "A",
+      "name": "Address"
+    }
+  ],
+  "spatial_modes": [
+    {
+      "mode": "residential",
+      "default": true
+    },
+    {
+      "mode": "work",
+      "default": false
+    },
+    {
+      "mode": "auto",
+      "default": false
+    }
+  ],
+  "match_types": [
+    {
+      "type": "graph_address_match",
+      "levels": [
+        "A"
+      ],
+      "description": "Street address + zip code alone (property and location profile)"
+    },
+    {
+      "type": "graph_email_match",
+      "levels": [
+        "D"
+      ],
+      "description": "Known email alone"
+    },
+    {
+      "type": "graph_first_dob_address_match",
+      "levels": [
+        "I"
+      ],
+      "description": "First name + date of birth + address (resolves across surname changes)"
+    },
+    {
+      "type": "graph_fuzzy_street_match",
+      "levels": [
+        "I"
+      ],
+      "description": "Name + street with highway/route alias or minor spelling variation"
+    },
+    {
+      "type": "graph_iag_person_id_match",
+      "levels": [
+        "I",
+        "H",
+        "D",
+        "S",
+        "A",
+        null
+      ],
+      "description": "Recognized ID; preserves prior match provenance"
+    },
+    {
+      "type": "graph_last_name_address_match",
+      "levels": [
+        "H"
+      ],
+      "description": "Last name + address (household co-resident or family offer)"
+    },
+    {
+      "type": "graph_last_name_email_match",
+      "levels": [
+        "H"
+      ],
+      "description": "Last name + email"
+    },
+    {
+      "type": "graph_last_name_phone_match",
+      "levels": [
+        "H"
+      ],
+      "description": "Last name + phone"
+    },
+    {
+      "type": "graph_name_address_match",
+      "levels": [
+        "I"
+      ],
+      "description": "First name + last name + street address + zip code"
+    },
+    {
+      "type": "graph_name_email_match",
+      "levels": [
+        "H",
+        "I"
+      ],
+      "description": "First name + last name + email (raw or pre-hashed)"
+    },
+    {
+      "type": "graph_name_phone_match",
+      "levels": [
+        "H",
+        "I"
+      ],
+      "description": "First name + last name + phone (raw or pre-hashed)"
+    },
+    {
+      "type": "graph_name_zip_dob_match",
+      "levels": [
+        "I"
+      ],
+      "description": "First name + last name + zip code + date of birth (no street needed)"
+    },
+    {
+      "type": "graph_phone_match",
+      "levels": [
+        "D"
+      ],
+      "description": "Known phone number alone"
+    },
+    {
+      "type": "probabilistic_name_address_match",
+      "levels": [
+        "I"
+      ],
+      "description": "Weighted agreement across name, address, unit, or neighboring zip"
+    },
+    {
+      "type": "spatial_match",
+      "levels": [
+        "S"
+      ],
+      "description": "Name + physical coordinate proximity within neighborhood or commuter shed"
+    }
+  ]
+}

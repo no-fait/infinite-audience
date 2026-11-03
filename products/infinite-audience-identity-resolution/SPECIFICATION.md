@@ -1,7 +1,7 @@
-# Infinite Audience Identity Resolution & Enrichment — Specification (v1.0)
+# Infinite Audience Identity Resolution & Enrichment — Specification (v1.1)
 
-**Product Specification:** v1.0 Baseline (independent of Graph and API versions; the [production OpenAPI contract](https://github.com/no-fait/infinite-audience/tree/main/products/infinite-audience-platform) governs API requests and responses)  
-**Release Tag:** `id-v1.0`  
+**Product Specification:** v1.1 Baseline (independent of Graph and API versions; the [production OpenAPI contract](https://github.com/no-fait/infinite-audience/tree/main/products/infinite-audience-platform) governs API requests and responses)  
+**Release Tag:** `id-v1.1`  
 **Product Directory:** `products/infinite-audience-identity-resolution/`  
 
 ---
