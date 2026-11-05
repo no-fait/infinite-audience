@@ -34,7 +34,8 @@ Official public specification, input contracts, match type taxonomy, and release
 
 - **[Specification](SPECIFICATION.md)**: Full baseline specification covering input fields, normalization rules, matching cascade, and record licensing.
 - **[Interactive Documentation](https://docs.infiniteaudience.ai/product/identity-resolution)**: Live documentation, interactive examples, and platform guides.
-- **[Latest Release Notes](releases/id-v1.1.md)**: Official release notes for version `id-v1.0`.
+- **[Changelog](CHANGELOG.md)**: Single running chronological version history across all Identity Resolution releases.
+- **[Latest Release Notes](releases/id-v1.1.md)**: Official release notes for version `id-v1.1`.
 
 ---
 
