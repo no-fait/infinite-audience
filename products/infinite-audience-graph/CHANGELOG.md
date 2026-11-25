@@ -2,6 +2,55 @@
 
 All notable releases, schema evolutions, and coverage changes for the Infinite Audience Graph are documented here.
 
+## [Infinite Audience Graph v1.5.4.0] - November 25, 2026
+
+**Release Tag:** `iag-v1.5.4.0` | **Vintage:** November 2026
+
+### 📊 Graph Scale
+- **Resolved Individuals:** **243,393,313** verified consumer profiles
+
+### 🆕 Added Attributes (3)
+- `infinite_vector` (`STRING` • *Audiences & Segments*): Specific consumer persona (36 Infinite Vectors segments) summarizing who the individual is across demographics, home and neighborhood context, and everyday interests.
+- `infinite_vector_group` (`STRING` • *Audiences & Segments*): Broad consumer lifestyle group (12 parent cohorts) organizing individuals by life stage, household makeup, and neighborhood setting.
+- `has_adult_children` (`BOOL` • *Demographics & Household*): Indicates whether the individual is a parent of grown adult children (age 18+), either living at home or living independently.
+
+### 🔄 Modified Attributes (2)
+- `number_of_children` (*Demographics & Household*): updated description
+- `behavioral_propensities` (*Media & Behavioral*): updated description
+
+## 🚀 What's New in v1.5.4.0
+
+### 1. Nationwide Infinite Vectors Segmentation (5×12×36 Taxonomy)
+- **Full-Graph Persona & Lifestyle Coverage**: Launched Infinite Vectors nationwide across all active U.S. consumer profiles, organizing consumers into a structured three-tier hierarchy of **5 life-stage macro-dimensions**, **12 broad lifestyle groups**, and **36 specific consumer personas** grounded in demographics, household wealth, home and neighborhood context, and everyday interests.
+- **2 New Customer-Facing *Audiences & Segments* Attributes**:
+  - **Infinite Vector Group** (`infinite_vector_group` • `STRING`): Assigns each consumer to one of **12 parent lifestyle cohorts** across five life-stage macro-dimensions (*Early Career & Urban Singles*, *Young & Growing Families*, *Midlife Family Years*, *Midlife Independents*, and *Empty Nesters & Retirees*)—spanning *Young Suburban Starters*, *City Neighborhood Singles*, *Young Suburban Families*, *Urban Young Households*, *Affluent Suburban Estates*, *Town & Country Families*, *Established Suburban Families*, *Suburban Midlife Singles*, *Established Working-Class Households*, *City Apartment Singles*, *Country & Hometown Empty Nesters*, and *Legacy Seniors & Retirees*.
+  - **Infinite Vector** (`infinite_vector` • `STRING`): Assigns each consumer to one of **36 distinct leaf personas** (such as *Cap & Gown Suburbia*, *Metro Mavens*, *Playdates & Paychecks*, *Skyline Climbers*, and *Home Office & Homework*) for immediate audience profiling, lookalike storytelling, and campaign activation.
+
+### 2. Expanded Infinite Audiences Catalog: Resort-Nest Estate Parent (167 Cohorts)
+- **167 Ready-to-Activate Pre-Built Cohorts**: Expanded the `infinite_audiences` catalog with **`Household: Resort-Nest Estate Parent`**, isolating high-net-worth homeowners (ages 48–74) with grown adult children who own luxury single-family homes and resort-amenity estates (pools, waterfront, golf course or golf community properties, or prime high-value residences).
+
+### 3. Parenting & Multi-Generational Lifecycle Intelligence
+- **Grown Children Indicator (`has_adult_children` • `BOOL`)**: Added a dedicated attribute in *Demographics & Household* identifying parents of grown adult children (age 18+), whether living independently or co-residing at home.
+- **Active Minor Child Clarity**: Refined `number_of_children` (`1 - 2`, `3 - 5`, `6+`) and `has_children` so active minor-child households are cleanly separated from parents whose children have aged into adulthood.
+
+---
+
+## 🛠️ Graph & Platform Improvements
+
+- **Unified Household & Marital Status Modeling**: Improved cross-surname co-resident couple unification in single-family residences and strengthened marital status modeling so verified solo residents, unpartnered seniors, and co-residing couples reflect accurate household sizes and relationship states.
+
+---
+
+## 🛡️ Data Quality & Outlier Sanitization
+
+- **Multi-Signal Identity Coherence & Conflict Prevention**: Deployed identity coherence auditing to detect cross-record profile splicing, demographic contradictions, and feature-level inconsistencies, paired with age-, generational suffix-, and gender-concordance gates during profile consolidation to prevent parent/child and Sr./Jr. attribute contamination.
+- **Biological Parent-Age Bounds & Junior-Adult Isolation**: Applied biological parent-age checks to retire legacy minor-child flags on senior profiles while preserving young-parent child signals in multi-generational households, and blocked parcel-level homeownership and household wealth attributes from bleeding onto young adults living in a parent's home.
+
+---
+*Maintained by **Finn** (<finn@infiniteaudience.ai>) • Infinite Audience*
+
+---
+
 ## [Infinite Audience Graph v1.4.3.0] - October 28, 2026
 
 **Release Tag:** `iag-v1.4.3.0` | **Vintage:** October 2026

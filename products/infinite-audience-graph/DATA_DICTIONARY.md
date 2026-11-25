@@ -1,6 +1,6 @@
 # Infinite Audience Graph — Data Dictionary
 
-**Version:** `v1.4.3.0` | **Generated:** October 27, 2026 | **Total Attributes:** 546
+**Version:** `v1.5.4.0` | **Generated:** November 25, 2026 | **Total Attributes:** 549
 
 This data dictionary provides comprehensive field definitions, data types, entity levels, PII classifications, and value mappings for the Infinite Audience Graph (IAG).
 
@@ -9,8 +9,8 @@ This data dictionary provides comprehensive field definitions, data types, entit
 ## Table of Contents
 
 - [Identity](#identity) (17 attributes)
-- [Audiences & Segments](#audiences--segments) (1 attributes)
-- [Demographics & Household](#demographics--household) (10 attributes)
+- [Audiences & Segments](#audiences--segments) (3 attributes)
+- [Demographics & Household](#demographics--household) (11 attributes)
 - [Financial & Property](#financial--property) (9 attributes)
 - [Professional](#professional) (6 attributes)
 - [Media & Behavioral](#media--behavioral) (12 attributes)
@@ -56,7 +56,9 @@ This data dictionary provides comprehensive field definitions, data types, entit
 
 | Column Name | Type | Level | PII | Description | Value Mappings / Notes |
 | :--- | :--- | :--- | :---: | :--- | :--- |
-| `infinite_audiences` | `ARRAY<STRING>` | Individual | No | Array of active Infinite Audience cohorts | `Aviation: Certified Flight Instructor`: Aviation: Certified Flight Instructor<br>`Aviation: Commercial Airline Captain`: Aviation: Commercial Airline Captain<br>`Aviation: Commercial Remote Drone Pilot`: Aviation: Commercial Remote Drone Pilot<br>`Civic: Foundation Trustee`: Civic: Foundation Trustee<br>`Civic: Labor Union Executive`: Civic: Labor Union Executive<br>`Civic: Nonprofit & Institutional Executive`: Civic: Nonprofit & Institutional Executive<br>`Corporate: 401(k) & Benefit Plan Fiduciary`: Corporate: 401(k) & Benefit Plan Fiduciary<br>`Corporate: C-Suite Public Insider`: Corporate: C-Suite Public Insider<br>... (+158 more) |
+| `infinite_vector` | `STRING` | Individual | No | Specific consumer persona (36 Infinite Vectors segments) summarizing who the individual is across demographics, home and neighborhood context, and everyday interests. | `Cap & Gown Suburbia`: Cap & Gown Suburbia<br>`Rookie Year`: Rookie Year<br>`Parkside Prosperity`: Parkside Prosperity<br>`Porchfront Starters`: Porchfront Starters<br>`Metro Mavens`: Metro Mavens<br>`Playdates & Paychecks`: Playdates & Paychecks<br>`Bunk Beds & Backyards`: Bunk Beds & Backyards<br>`City Go-Getters`: City Go-Getters<br>... (+28 more) |
+| `infinite_vector_group` | `STRING` | Individual | No | Broad consumer lifestyle group (12 parent cohorts) organizing individuals by life stage, household makeup, and neighborhood setting. | `Young Suburban Starters`: Young Suburban Starters<br>`City Neighborhood Singles`: City Neighborhood Singles<br>`Young Suburban Families`: Young Suburban Families<br>`Urban Young Households`: Urban Young Households<br>`Affluent Suburban Estates`: Affluent Suburban Estates<br>`Town & Country Families`: Town & Country Families<br>`Established Suburban Families`: Established Suburban Families<br>`Suburban Midlife Singles`: Suburban Midlife Singles<br>... (+4 more) |
+| `infinite_audiences` | `ARRAY<STRING>` | Individual | No | Array of active Infinite Audience cohorts | `Aviation: Certified Flight Instructor`: Aviation: Certified Flight Instructor<br>`Aviation: Commercial Airline Captain`: Aviation: Commercial Airline Captain<br>`Aviation: Commercial Remote Drone Pilot`: Aviation: Commercial Remote Drone Pilot<br>`Civic: Foundation Trustee`: Civic: Foundation Trustee<br>`Civic: Labor Union Executive`: Civic: Labor Union Executive<br>`Civic: Nonprofit & Institutional Executive`: Civic: Nonprofit & Institutional Executive<br>`Corporate: 401(k) & Benefit Plan Fiduciary`: Corporate: 401(k) & Benefit Plan Fiduciary<br>`Corporate: C-Suite Public Insider`: Corporate: C-Suite Public Insider<br>... (+159 more) |
 
 ---
 
@@ -73,7 +75,8 @@ This data dictionary provides comprehensive field definitions, data types, entit
 | `household_size` | `INT64` | Household | No | Count of individuals linked to the same resolved IAG household identifier (iag_household_id). | - |
 | `has_children` | `BOOL` | Household | No | Indicates whether children reside within the household. | - |
 | `children_age_ranges` | `ARRAY<STRING>` | Household | No | Child age ranges present in the household (e.g., Under 6, 6-10, 11-15, 16-17) | `Under 6`: Under 6<br>`6-10`: 6–10<br>`11-15`: 11–15<br>`16-17`: 16–17 |
-| `number_of_children` | `STRING` | Household | No | Number of children in household (No Children, 1 - 2, 3 - 5, 6+) | `No Children`: No Children<br>`1 - 2`: 1 – 2<br>`3 - 5`: 3 – 5<br>`6+`: 6+ |
+| `number_of_children` | `STRING` | Household | No | Number of children in household (1 - 2, 3 - 5, 6+) | `1 - 2`: 1 – 2<br>`3 - 5`: 3 – 5<br>`6+`: 6+ |
+| `has_adult_children` | `BOOL` | Individual | No | Indicates whether the individual is a parent of grown adult children (age 18+), either living at home or living independently. | - |
 | `is_single_parent` | `BOOL` | Household | No | Indicates whether the household is led by a single parent. | - |
 
 ---
@@ -122,8 +125,8 @@ This data dictionary provides comprehensive field definitions, data types, entit
 | `political_outlook_score` | `INT64` | Individual | No | Political outlook score (1=Very Conservative, 2=Somewhat Conservative, 3=Moderate, 4=Somewhat Liberal, 5=Very Liberal) | `1`: 1 – Very Conservative<br>`2`: 2 – Somewhat Conservative<br>`3`: 3 – Moderate<br>`4`: 4 – Somewhat Liberal<br>`5`: 5 – Very Liberal |
 | `shopper_segment` | `STRING` | Individual | No | Shopper segment persona category (e.g. Trendsetter, Bargain Hunter) | `Quality Seeker`: Quality Seeker<br>`Deal Seeker`: Deal Seeker<br>`Straightforward`: Straightforward<br>`Traditional`: Traditional<br>`Offline`: Offline |
 | `tech_attitude_score` | `INT64` | Individual | No | Technology adoption attitude score (1-5 = low to high) | `1`: 1 – Very Low Tech<br>`2`: 2 – Low Tech<br>`3`: 3 – Moderate<br>`4`: 4 – High Tech<br>`5`: 5 – Very High Tech |
-| `interests` | `ARRAY<STRING>` | Individual | No | True hobbies and specific topic interests (e.g., photography, crafts_and_sewing, cooking_and_gourmet) | `accessories`: Accessories<br>`american_history`: American History<br>`apparel`: Apparel<br>`audio`: Audio<br>`automotive`: Automotive<br>`aviation`: Aviation<br>`bargain_shopping`: Bargain Shopping<br>`baseball`: Baseball<br>... (+83 more) |
-| `behavioral_propensities` | `ARRAY<STRING>` | Individual | No | Modeled indicators predicting major financial or commercial transactional life-events (e.g., job_seeking, upscale_shopping, credit_report) | `auto_insurance`: Auto Insurance<br>`credit_card_user`: Credit Card User<br>`credit_repair`: Credit Repair<br>`credit_report`: Credit Report<br>`education_seeker`: Education Seeker<br>`food_delivery`: Food Delivery<br>`health_insurance`: Health Insurance<br>`home_office`: Home Office<br>... (+11 more) |
+| `interests` | `ARRAY<STRING>` | Individual | No | True hobbies and specific topic interests (e.g., photography, crafts_and_sewing, cooking_and_gourmet) | `accessories`: Accessories<br>`american_history`: American History<br>`audio`: Audio<br>`automotive`: Automotive<br>`aviation`: Aviation<br>`bargain_shopping`: Bargain Shopping<br>`baseball`: Baseball<br>`basketball`: Basketball<br>... (+70 more) |
+| `behavioral_propensities` | `ARRAY<STRING>` | Individual | No | High-propensity transactional and life-event signals (e.g., heavy_credit_card_user, subscription_boxes, online_shopping) | `auto_insurance`: Auto Insurance<br>`credit_repair`: Credit Repair<br>`credit_report`: Credit Report<br>`education_seeker`: Education Seeker<br>`food_delivery`: Food Delivery<br>`health_insurance`: Health Insurance<br>`heavy_credit_card_user`: Heavy Credit Card User<br>`home_office`: Home Office<br>... (+8 more) |
 | `charitable_donation_causes` | `ARRAY<STRING>` | Individual | No | Causes the person has donated to (e.g., PBS, Arts, Environment, Health) | `Arts`: Arts<br>`Education`: Education<br>`Environment`: Environment<br>`Health`: Health<br>`Non-Religious`: Non-Religious<br>`NPR`: NPR<br>`PBS`: PBS<br>`Politics`: Politics<br>... (+1 more) |
 | `is_gamer` | `BOOL` | Individual | No | Video game enthusiast. | - |
 
